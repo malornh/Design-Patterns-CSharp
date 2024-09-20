@@ -2,6 +2,7 @@
 using Design_Patterns.Abstract_Factory;
 using Design_Patterns.Factory;
 using Design_Patterns.Singleton;
+using Design_Patterns.Adapter;
 
 
 // Singletion 
@@ -41,3 +42,14 @@ IVehicle truckVehicle = truckDeliveryFactory.CreateVehicle();
 
 Console.WriteLine(truckDriver.GetLicenseInfo());
 Console.WriteLine(truckVehicle.GetVehicleInfo());
+
+
+// Adapter
+var squareHole = new SquareHole(5);
+var square = new Square(4);
+
+Console.WriteLine(squareHole.canFit(square));
+
+var circle = new Circle(2);
+var adaptedCircle = new CircleToSquareAdapter(circle);
+Console.WriteLine(squareHole.canFit(adaptedCircle));
