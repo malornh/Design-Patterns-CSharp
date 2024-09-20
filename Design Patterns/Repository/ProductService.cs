@@ -10,7 +10,7 @@ namespace Design_Patterns.Repository
     {
         private readonly IProductRepository _productRepository;
 
-        public ProductService(ProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

@@ -16,13 +16,20 @@ namespace Design_Patterns.Repository
         public void Add(Product product) => _products.Add(product);
         public void Update(Product product)
         {
-            var existingProduct = _products[product.Id];
+            var existingProduct = _products.FirstOrDefault(p => p.Id == product.Id);
             if(existingProduct != null)
             {
                 existingProduct.Name = product.Name;
                 existingProduct.Price = product.Price;
             }
         }
-        public void Delete(int id) => _products.RemoveAt(id);
+        public void Delete(int id)
+        {
+            var existingProduct = _products.FirstOrDefault(p => p.Id == id);
+            if (existingProduct != null)
+            {
+                _products.Remove(existingProduct);
+            }
+        }
     }
 }
