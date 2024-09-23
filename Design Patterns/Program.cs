@@ -4,6 +4,7 @@ using Design_Patterns.Factory;
 using Design_Patterns.Singleton;
 using Design_Patterns.Adapter;
 using Design_Patterns.Repository;
+using Design_Patterns.Decorator_Pattern;
 
 
 // Singletion 
@@ -74,3 +75,13 @@ foreach (var product in products)
 {
     Console.WriteLine($"Id: {product.Id}, Name: {product.Name}, Price: {product.Price}");
 }
+
+
+
+// Decorator
+
+string user = "Jivko";
+INotifierService emailService = new EmailService();
+INotifierService facebookService = new FacebookServiceDecorator(emailService);
+INotifierService _slackService = new SlackServiceDecorator(facebookService);
+_slackService.Notify(user);

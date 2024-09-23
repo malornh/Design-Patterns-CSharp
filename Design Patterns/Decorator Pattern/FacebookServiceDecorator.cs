@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Design_Patterns.Decorator_Pattern
+{
+    public class FacebookServiceDecorator : INotifierService
+    {
+        private readonly INotifierService _notifierService;
+
+        public FacebookServiceDecorator(INotifierService notifierService)
+        {
+            _notifierService = notifierService;
+        }
+
+        public void Notify(string user)
+        {
+            _notifierService.Notify(user);
+            Console.WriteLine("Sent Facebook notification to " + user + ".");
+        }
+
+            
+    }
+}
